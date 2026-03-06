@@ -1,0 +1,241 @@
+/* Base Page Setup */
+.page-container {
+  position: relative;
+  width: 100vw;
+  min-height: 100vh;
+  background-color: #050505; /* Deep black space */
+  color: #ffffff;
+  font-family: 'Inter', system-ui, sans-serif;
+  overflow-x: hidden;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 2rem;
+  box-sizing: border-box;
+}
+
+/* --- MESH GRADIENT BACKGROUND --- */
+.background-blobs {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 0;
+  overflow: hidden;
+  pointer-events: none; /* Prevents blobs from blocking clicks */
+}
+
+.blob {
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(120px); /* This creates the "Aurora" effect */
+  opacity: 0.6;
+}
+
+.blob-primary {
+  width: 600px;
+  height: 600px;
+  background-color: rgba(139, 92, 246, 0.4); /* Violet-500 */
+  top: -10%;
+  left: -5%;
+}
+
+.blob-secondary {
+  width: 500px;
+  height: 500px;
+  background-color: rgba(88, 28, 135, 0.5); /* Deep Violet-900 */
+  bottom: 10%;
+  right: -5%;
+}
+
+.blob-tertiary {
+  width: 400px;
+  height: 400px;
+  background-color: rgba(167, 139, 250, 0.2); /* Light Violet-400 */
+  top: 40%;
+  left: 30%;
+}
+
+/* --- MAIN GLASSMORPHISM CONTAINER --- */
+.glass-interface {
+  position: relative;
+  z-index: 10;
+  width: 100%;
+  max-width: 1000px;
+  background: rgba(20, 15, 30, 0.4); /* Dark translucent background */
+  backdrop-filter: blur(16px); /* Blurs the elements behind it */
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid rgba(167, 139, 250, 0.2); /* Subtle violet border */
+  border-radius: 24px;
+  padding: 2rem;
+  box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
+}
+
+/* --- CONTROLS: SEARCH & FILTERS --- */
+.controls-section {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  margin-bottom: 2rem;
+}
+
+.search-bar {
+  display: flex;
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 12px;
+  padding: 0.5rem;
+}
+
+.search-input {
+  flex: 1;
+  background: transparent;
+  border: none;
+  color: white;
+  padding: 0.5rem 1rem;
+  outline: none;
+}
+
+.search-input::placeholder {
+  color: rgba(255, 255, 255, 0.4);
+}
+
+.search-btn {
+  background: rgba(139, 92, 246, 0.2);
+  border: none;
+  border-radius: 8px;
+  padding: 0.5rem 1rem;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+
+.search-btn:hover {
+  background: rgba(139, 92, 246, 0.4);
+}
+
+.filter-tags {
+  display: flex;
+  gap: 0.75rem;
+  flex-wrap: wrap;
+}
+
+.filter-tag {
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  color: rgba(255, 255, 255, 0.7);
+  padding: 0.5rem 1rem;
+  border-radius: 20px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.filter-tag:hover, .filter-tag.active {
+  background: rgba(139, 92, 246, 0.3);
+  border-color: rgba(167, 139, 250, 0.5);
+  color: #fff;
+}
+
+/* --- CONTENT: MATCH CARDS --- */
+.section-title {
+  font-size: 1.25rem;
+  font-weight: 600;
+  color: #ddd6fe; /* Light violet text */
+  margin-bottom: 1.5rem;
+}
+
+.matches-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  gap: 1.5rem;
+}
+
+.match-card {
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 16px;
+  padding: 1.5rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  transition: transform 0.2s ease, border-color 0.2s ease;
+}
+
+.match-card:hover {
+  transform: translateY(-5px);
+  border-color: rgba(139, 92, 246, 0.4);
+}
+
+.avatar-placeholder {
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #4c1d95, #8b5cf6);
+  margin-bottom: 1rem;
+}
+
+.user-name {
+  font-size: 1.1rem;
+  margin: 0 0 0.25rem 0;
+}
+
+.user-role {
+  font-size: 0.85rem;
+  color: rgba(255, 255, 255, 0.5);
+  margin: 0 0 1rem 0;
+}
+
+.overlap-indicator {
+  width: 100%;
+  background: rgba(0, 0, 0, 0.2);
+  border-radius: 8px;
+  padding: 0.75rem;
+  margin-bottom: 1.5rem;
+}
+
+.overlap-text {
+  display: block;
+  font-size: 0.8rem;
+  color: #a78bfa;
+  margin-bottom: 0.5rem;
+  font-weight: 600;
+}
+
+.tags-container {
+  display: flex;
+  gap: 0.5rem;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.small-tag {
+  font-size: 0.7rem;
+  background: rgba(255, 255, 255, 0.1);
+  padding: 0.2rem 0.5rem;
+  border-radius: 4px;
+}
+
+.connect-btn {
+  width: 100%;
+  padding: 0.75rem;
+  background: transparent;
+  border: 1px solid rgba(139, 92, 246, 0.5);
+  color: white;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background 0.2s;
+  margin-top: auto;
+}
+
+.connect-btn:hover {
+  background: rgba(139, 92, 246, 0.2);
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .matches-grid {
+    grid-template-columns: 1fr; /* Stacks to 1 column on mobile like the wireframe sidebar */
+  }
+}
