@@ -29,7 +29,7 @@ export default function FindPeople() {
             <input type="text" placeholder="Search by keyword or interest..." className="search-input" />
             {/* 2. Replace emoji with Lucide Search icon */}
             <button className="search-btn">
-              <Search size={18} color="currentColor" />
+              <Search size={20} color="currentColor" />
             </button>
           </div>
           
