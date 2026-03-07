@@ -17,12 +17,14 @@ const MATCHED_USERS = [
 export default function FindPeople() {
   const [interests, setinterests] = useState([]);
   const [activeFilters, setActiveFilters] = useState([]);
+  const [matchedUsers, setMatchedUsers] = useState([]);
+
 
   const fetchInterestList = async () => {
     try {
       const response = await fetch('http://127.0.0.1:8000/api/interests/');
       const data = await response.json();
-      data.forEach(item =>{
+      data.forEach(item => {
         setinterests(prev => [...prev, item.name])
       })
 
@@ -32,23 +34,52 @@ export default function FindPeople() {
     }
 
   }
-  useEffect(() => {
-    fetchInterestList();
-  },[])
-  return (
-    <div className="page-container">
-      <div className="background-blobs">
-        <div className="blob blob-primary"></div>
-        <div className="blob blob-secondary"></div>
-        <div className="blob blob-tertiary"></div>
-      </div>
 
-      <main className="glass-interface">
+  const fetchMatchedUsers = async () => {
+    //incase no filters are active, we can skip the API call and just clear the matched users
+    if (activeFilters.length === 0) {
+      return;
+    }
+    // Make API call to fetch matched users based on active filters
+    try {
+      const reponse = await fetch('http://127.0.0.1:8000/api/match/', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({ interests: activeFilters })
+      })
+      const data = await reponse.json();
+      setMatchedUsers(data);
+      console.log("Matched Users:", data);
+    } catch (error) {
+      console.error("Error fetching matched users:", error);
+    }
 
-        <FilterTags interests={interests} activeFilters={activeFilters} setActiveFilters={setActiveFilters} />
+  }
+
+useEffect(() => {
+  fetchInterestList();
+}, [])
+
+useEffect(() => {
+  fetchMatchedUsers();
+}, [activeFilters]);
+
+return (
+  <div className="page-container">
+    <div className="background-blobs">
+      <div className="blob blob-primary"></div>
+      <div className="blob blob-secondary"></div>
+      <div className="blob blob-tertiary"></div>
+    </div>
+
+    <main className="glass-interface">
+
+      <FilterTags interests={interests} activeFilters={activeFilters} setActiveFilters={setActiveFilters} />
 
 
-        {/* <section className="content-section">
+      {/* <section className="content-section">
           <h2 className="section-title">Matching Interests</h2>
           <div className="matches-grid">
             {MATCHED_USERS.map(user => (
@@ -70,9 +101,9 @@ export default function FindPeople() {
           </div>
         </section> */}
 
-        <ContentSection MATCHED_USERS={MATCHED_USERS} />
-      </main>
+      <ContentSection matchedUsers={matchedUsers} />
+    </main>
 
-    </div>
-  );
+  </div>
+);
 }

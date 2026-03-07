@@ -1,6 +1,6 @@
 import { useEffect } from 'react'
 import './FilterTags.css'
-export default function FilterTags({ interests, activeFilters, setActiveFilters }) {
+export default function FilterTags({ interests, activeFilters = [], setActiveFilters }) {
 
   const toggleFilter = (filterName) => {
     if( activeFilters.includes(filterName)){
