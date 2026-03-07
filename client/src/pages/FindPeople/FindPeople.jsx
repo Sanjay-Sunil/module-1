@@ -3,6 +3,7 @@ import React, { useState } from 'react';
 import { Search, Home, PenTool, FileText, Settings, Github, Linkedin, Filter } from 'lucide-react';
 import './FindPeople.css';
 import FilterTags from './FilterTags';
+import ContentSection from './ContentSection';
 
 const MATCHED_USERS = [
   { id: 1, name: "Alex Chen", role: "Full Stack Dev", overlap: "92%", tags: ["React", "Node.js"] },
@@ -29,7 +30,7 @@ export default function FindPeople() {
           <FilterTags INTEREST_FILTERS={INTEREST_FILTERS} activeFilter={activeFilter} setActiveFilter={setActiveFilter}/>
 
 
-        <section className="content-section">
+        {/* <section className="content-section">
           <h2 className="section-title">Matching Interests</h2>
           <div className="matches-grid">
             {MATCHED_USERS.map(user => (
@@ -49,7 +50,9 @@ export default function FindPeople() {
               </article>
             ))}
           </div>
-        </section>
+        </section> */}
+
+        <ContentSection MATCHED_USERS={MATCHED_USERS} />
       </main>
 
     </div>
