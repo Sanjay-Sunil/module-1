@@ -1,6 +1,6 @@
 import { useEffect } from 'react'
 import './FilterTags.css'
-export default function FilterTags({ INTEREST_FILTERS, activeFilters, setActiveFilters }) {
+export default function FilterTags({ interests, activeFilters, setActiveFilters }) {
 
   const toggleFilter = (filterName) => {
     if( activeFilters.includes(filterName)){
@@ -24,7 +24,7 @@ export default function FilterTags({ INTEREST_FILTERS, activeFilters, setActiveF
           </button>
         </div> */}
         <div className="filter-tags">
-          {INTEREST_FILTERS.map(filter => (
+          {interests.map(filter => (
             <button
               key={filter}
               // Check if the array includes this specific filter to apply the 'active' class

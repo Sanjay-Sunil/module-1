@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 // 1. Import the specific icons you need
 import { Search, Home, PenTool, FileText, Settings, Github, Linkedin, Filter } from 'lucide-react';
 import './FindPeople.css';
@@ -12,11 +12,29 @@ const MATCHED_USERS = [
   { id: 4, name: "Taylor Swift", role: "Backend Eng", overlap: "65%", tags: ["Django", "PostgreSQL"] }
 ];
 
-const INTEREST_FILTERS = ["All", "Hackathons", "Web Dev", "AI/ML", "Open Source"];
+
 
 export default function FindPeople() {
+  const [interests, setinterests] = useState([]);
   const [activeFilters, setActiveFilters] = useState([]);
 
+  const fetchInterestList = async () => {
+    try {
+      const response = await fetch('http://127.0.0.1:8000/api/interests/');
+      const data = await response.json();
+      data.forEach(item =>{
+        setinterests(prev => [...prev, item.name])
+      })
+
+      console.log("Fetched Interests:", data);
+    } catch (error) {
+      console.error("Error fetching interests:", error);
+    }
+
+  }
+  useEffect(() => {
+    fetchInterestList();
+  },[])
   return (
     <div className="page-container">
       <div className="background-blobs">
@@ -27,7 +45,7 @@ export default function FindPeople() {
 
       <main className="glass-interface">
 
-          <FilterTags INTEREST_FILTERS={INTEREST_FILTERS} activeFilters={activeFilters} setActiveFilters={setActiveFilters}/>
+        <FilterTags interests={interests} activeFilters={activeFilters} setActiveFilters={setActiveFilters} />
 
 
         {/* <section className="content-section">
