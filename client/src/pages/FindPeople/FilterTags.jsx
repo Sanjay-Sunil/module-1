@@ -1,9 +1,22 @@
+import { useEffect } from 'react'
 import './FilterTags.css'
-export default function FilterTags({ INTEREST_FILTERS, activeFilter, setActiveFilter }) {
+export default function FilterTags({ INTEREST_FILTERS, activeFilters, setActiveFilters }) {
+
+  const toggleFilter = (filterName) => {
+    if( activeFilters.includes(filterName)){
+      setActiveFilters(activeFilters.filter(item => item !== filterName))
+    } else {
+      setActiveFilters([...activeFilters, filterName])
+    }
+    
+  }
+
+  useEffect(() => {
+    console.log("Active Filters Updated:", activeFilters);
+  }, [activeFilters])
   return (
     <>
-      <section className="controls-section">
-
+    <section className="controls-section">
         {/* <div className="search-bar">
           <input type="text" placeholder="Search by keyword or interest..." className="search-input" />
           <button className="search-btn">
@@ -14,8 +27,9 @@ export default function FilterTags({ INTEREST_FILTERS, activeFilter, setActiveFi
           {INTEREST_FILTERS.map(filter => (
             <button
               key={filter}
-              className={`filter-tag ${activeFilter === filter ? 'active' : ''}`}
-              onClick={() => setActiveFilter(filter)}
+              // Check if the array includes this specific filter to apply the 'active' class
+              className={`filter-tag ${activeFilters?.includes(filter) ? 'active' : ''}`}
+              onClick={() => toggleFilter(filter)}
             >
               {filter}
             </button>

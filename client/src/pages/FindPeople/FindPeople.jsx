@@ -15,7 +15,7 @@ const MATCHED_USERS = [
 const INTEREST_FILTERS = ["All", "Hackathons", "Web Dev", "AI/ML", "Open Source"];
 
 export default function FindPeople() {
-  const [activeFilter, setActiveFilter] = useState("All");
+  const [activeFilters, setActiveFilters] = useState([]);
 
   return (
     <div className="page-container">
@@ -27,7 +27,7 @@ export default function FindPeople() {
 
       <main className="glass-interface">
 
-          <FilterTags INTEREST_FILTERS={INTEREST_FILTERS} activeFilter={activeFilter} setActiveFilter={setActiveFilter}/>
+          <FilterTags INTEREST_FILTERS={INTEREST_FILTERS} activeFilters={activeFilters} setActiveFilters={setActiveFilters}/>
 
 
         {/* <section className="content-section">
