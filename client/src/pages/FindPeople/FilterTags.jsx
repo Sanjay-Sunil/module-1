@@ -17,12 +17,7 @@ export default function FilterTags({ interests, activeFilters = [], setActiveFil
   return (
     <>
     <section className="controls-section">
-        {/* <div className="search-bar">
-          <input type="text" placeholder="Search by keyword or interest..." className="search-input" />
-          <button className="search-btn">
-            <Search size={20} color="currentColor" />
-          </button>
-        </div> */}
+
         <div className="filter-tags">
           {interests.map(filter => (
             <button
