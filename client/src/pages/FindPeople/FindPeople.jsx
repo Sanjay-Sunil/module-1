@@ -22,7 +22,7 @@ export default function FindPeople() {
 
   const fetchInterestList = async () => {
     try {
-      const response = await fetch('http://127.0.0.1:8000/api/interests/');
+      const response = await fetch('https://user-matching.onrender.com/api/interests/');
       const data = await response.json();
       data.forEach(item => {
         setinterests(prev => [...prev, item.name])
@@ -42,7 +42,7 @@ export default function FindPeople() {
     }
     // Make API call to fetch matched users based on active filters
     try {
-      const reponse = await fetch('http://127.0.0.1:8000/api/match/', {
+      const reponse = await fetch('https://user-matching.onrender.com/api/match/', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json'
