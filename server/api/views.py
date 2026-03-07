@@ -3,8 +3,8 @@ from rest_framework.decorators import api_view
 from rest_framework.response import Response
 from rest_framework import status
 from django.db.models import Count, Q
-from .models import Users
-from .serializers import UserSerializer
+from .models import Users, Interest
+from .serializers import UserSerializer, InterestSerializer
 
 # creating user , get and post
 @api_view(['GET', 'POST'])
@@ -59,4 +59,11 @@ def match_user_by_overlap(request):
   ).order_by('-overlap_count')
   
   serializer = UserSerializer(matched_users, many=True)
+  return Response(serializer.data)
+
+
+@api_view(['GET'])
+def get_interest_fields(request):
+  interests = Interest.objects.all()
+  serializer = InterestSerializer(interests, many=True)
   return Response(serializer.data)
