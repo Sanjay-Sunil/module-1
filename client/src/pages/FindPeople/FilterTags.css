@@ -26,17 +26,17 @@
   transition: all 0.2s ease;
 }
 
-/* 1. Subtle change for just hovering */
+
 .filter-tag:hover {
   background: rgba(139, 92, 246, 0.15);
   border-color: rgba(167, 139, 250, 0.3);
   color: #fff;
 }
 
-/* 2. Strong, distinct change for active/selected state */
+
 .filter-tag.active {
-  background: rgba(139, 92, 246, 0.8); /* Solid, vibrant background */
-  border-color: rgba(167, 139, 250, 1); /* Solid border */
+  background: rgba(139, 92, 246, 0.8); 
+  border-color: rgba(167, 139, 250, 1); 
   color: #ffffff;
-  box-shadow: 0 0 12px rgba(139, 92, 246, 0.4); /* Nice glow effect */
+  box-shadow: 0 0 12px rgba(139, 92, 246, 0.4); 
 }

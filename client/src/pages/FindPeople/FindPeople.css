@@ -108,23 +108,22 @@
 }
 
 .avatar-placeholder {
-  width: 90px; /* Adjust this to make the avatar larger or smaller */
+  width: 90px;
   height: 90px;
-  border-radius: 50%; /* Makes the container a perfect circle */
-  overflow: hidden; /* Prevents the square image from bleeding out of the circle */
-  margin: 0 auto 1rem auto; /* Centers it and adds space below */
+  border-radius: 50%;
+  overflow: hidden; 
+  margin: 0 auto 1rem auto;
   display: flex;
   align-items: center;
   justify-content: center;
-  /* Optional: Adds a subtle border around the avatar */
   border: 2px solid rgba(139, 92, 246, 0.2); 
 }
 
 .avatar-placeholder img {
   width: 100%;
   height: 100%;
-  object-fit: cover; /* This is the magic property that fixes the squishing! */
-  object-position: center; /* Ensures the face stays in the middle */
+  object-fit: cover; 
+  object-position: center;
 }
 .user-name {
   font-size: 1.3rem;
@@ -139,7 +138,6 @@
 
 .overlap-indicator {
   width: 100%;
-  /* background: rgba(0, 0, 0, 0.2); */
   border-radius: 8px;
   padding: 0.75rem;
   margin-bottom: 1.5rem;
@@ -163,7 +161,7 @@
 .small-tag {
   background: rgba(255, 255, 255, 0.08);
   border: 1px solid rgba(255, 255, 255, 0.15);
-  color: #f1f5f9; /* Off-white text */
+  color: #f1f5f9; 
   padding: 0.2rem 0.4rem;
   border-radius: 8px;
   font-size: 0.75rem;
@@ -189,9 +187,8 @@
   background: rgba(139, 92, 246, 0.2);
 }
 
-/* Responsive adjustments */
 @media (max-width: 768px) {
   .matches-grid {
-    grid-template-columns: 1fr; /* Stacks to 1 column on mobile like the wireframe sidebar */
+    grid-template-columns: 1fr; 
   }
 }
