@@ -1,7 +1,8 @@
 import React, { useState } from 'react';
 // 1. Import the specific icons you need
-import { Search, Home, PenTool, FileText, Settings, Github, Linkedin } from 'lucide-react';
+import { Search, Home, PenTool, FileText, Settings, Github, Linkedin, Filter } from 'lucide-react';
 import './FindPeople.css';
+import FilterTags from './FilterTags';
 
 const MATCHED_USERS = [
   { id: 1, name: "Alex Chen", role: "Full Stack Dev", overlap: "92%", tags: ["React", "Node.js"] },
@@ -24,27 +25,9 @@ export default function FindPeople() {
       </div>
 
       <main className="glass-interface">
-        <section className="controls-section">
-          <div className="search-bar">
-            <input type="text" placeholder="Search by keyword or interest..." className="search-input" />
-            {/* 2. Replace emoji with Lucide Search icon */}
-            <button className="search-btn">
-              <Search size={20} color="currentColor" />
-            </button>
-          </div>
-          
-          <div className="filter-tags">
-            {INTEREST_FILTERS.map(filter => (
-              <button 
-                key={filter}
-                className={`filter-tag ${activeFilter === filter ? 'active' : ''}`}
-                onClick={() => setActiveFilter(filter)}
-              >
-                {filter}
-              </button>
-            ))}
-          </div>
-        </section>
+
+          <FilterTags INTEREST_FILTERS={INTEREST_FILTERS} activeFilter={activeFilter} setActiveFilter={setActiveFilter}/>
+
 
         <section className="content-section">
           <h2 className="section-title">Matching Interests</h2>
